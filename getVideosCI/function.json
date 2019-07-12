@@ -1,0 +1,29 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "id",
+      "databaseName": "YouGamers",
+      "collectionName": "Collection",
+      "connectionStringSetting": "yougamers-dev_DOCUMENTDB",
+      "direction": "in",
+      "sqlQuery": "SELECT * from c WHERE c.DocumentType = \"video\" AND c.DocumentID = {id} ORDER BY c.Title ASC"
+    }
+  ],
+  "scriptFile": "../dist/getVideosCI/index.js"
+}
